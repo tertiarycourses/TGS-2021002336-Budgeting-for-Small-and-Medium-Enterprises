@@ -1,0 +1,55 @@
+"""Topic 7 — Financial Compliance (A7, K6) — hands-on activities."""
+
+DOMAIN7 = [
+    dict(
+        num=10, topic=7,
+        title="Determining the Year of Assessment",
+        objective="LO7 — Perform financial control to ensure compliance (A7, K6)",
+        desc="Work out the Year of Assessment (YA) for a set of company financial years, applying IRAS's rule that the YA is the year following the financial year end.",
+        build="A completed YA worksheet mapping each financial year to its Year of Assessment.",
+        services="YA worksheet, IRAS website",
+        steps=[
+            ("Recall the rule: the YA is the 12-month period in which the company's income is assessed — income earned in a financial year is assessed in the YA that follows the financial year end.", ""),
+            ("Determine the YA for financial year 1 Jan 2019 to 31 Dec 2020.", ""),
+            ("Determine the YA for financial year 1 Apr 2019 to 31 Mar 2020.", ""),
+            ("Determine the YA for financial year 1 Jul 2019 to 30 Jun 2020.", ""),
+            ("Compare answers with the class and resolve any differences using the IRAS definition.", ""),
+        ],
+        test="Your worksheet assigns the correct YA to all three financial years (YA 2021, YA 2021 and YA 2021 respectively — the YA following each financial year end).",
+    ),
+    dict(
+        num=11, topic=7,
+        title="ECI and Corporate Tax Filing Deadlines",
+        objective="LO7 — Perform financial control to ensure compliance (A7, K6)",
+        desc="Determine when a company must file its Estimated Chargeable Income (ECI) and its corporate income tax return for a set of financial year ends.",
+        build="A completed filing-deadline worksheet showing the ECI deadline and income-tax filing deadline for each financial year.",
+        services="Filing-deadline worksheet, IRAS website",
+        steps=[
+            ("Recall the rules: ECI must be filed within 3 months of the financial year end; corporate income tax is e-Filed by 30 November (paper filing has been phased out from YA 2020).", ""),
+            ("For financial year 1 Jan 2019 to 31 Dec 2020, determine the ECI filing deadline and the income-tax filing deadline.", ""),
+            ("For financial year 1 Apr 2019 to 31 Mar 2020, determine the ECI filing deadline and the income-tax filing deadline.", ""),
+            ("For financial year 1 Jul 2019 to 30 Jun 2020, determine the ECI filing deadline and the income-tax filing deadline.", ""),
+            ("Discuss: what enforcement actions can IRAS take for late filing and late payment?", ""),
+        ],
+        test="Your worksheet shows the ECI deadline (FY end + 3 months) and the correct income-tax e-Filing deadline for each financial year, and you can state the late-filing and late-payment penalties.",
+    ),
+    dict(
+        num=12, topic=7,
+        title="Start-Up Tax Computation",
+        objective="LO7 — Perform financial control to ensure compliance (A7, K6)",
+        desc="Compute the corporate tax payable by a start-up over its first five years of profits, applying the Start-Up Tax Exemption Scheme and the 17% corporate tax rate.",
+        build="A completed 5-year tax computation for a start-up using the provided template.",
+        services="Tax computation template (Google Classroom), calculator",
+        steps=[
+            ("Open the workable template available in Google Classroom.", ""),
+            ("Recall the Start-Up Tax Exemption (from YA 2020): for the first 3 YAs — 75% exemption on the first S$100,000 of chargeable income and 50% exemption on the next S$100,000; the corporate tax rate is a flat 17%.", ""),
+            ("Year 1 — profits $200,000: compute the exempt amount, the chargeable income after exemption and the tax at 17%.", ""),
+            ("Year 2 — profits $300,000: repeat the computation (still within the first 3 YAs).", ""),
+            ("Year 3 — profits $400,000: repeat the computation (last start-up-exemption year).", ""),
+            ("Year 4 — profits $500,000: compute tax without the start-up exemption (partial exemption applies from YA 4 onward).", ""),
+            ("Year 5 — profits $600,000: repeat the computation without the start-up exemption.", ""),
+            ("Compare your 5-year tax schedule with the class and reconcile any differences.", ""),
+        ],
+        test="Your template shows, for each of the five years, the exemption applied, the chargeable income after exemption and the tax at 17% — with years 1–3 using the Start-Up Tax Exemption.",
+    ),
+]

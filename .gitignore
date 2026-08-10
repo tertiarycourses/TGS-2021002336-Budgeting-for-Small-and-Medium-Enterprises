@@ -1,0 +1,22 @@
+# Confidential — assessments are Drive-only, never GitHub
+assessment/
+reference/old-assessment/
+reference/tms/
+# Secrets & local config
+.env
+.claude/.env
+.claude/lms_tms_api_key
+# OS junk
+.DS_Store
+**/.DS_Store
+~$*
+# Distribution archives (rebuildable — never pushed to GitHub)
+*.zip
+# Source material the project was derived from — not ours to republish.
+**/reference/
+!.claude/skills/**/reference/
+!.claude/skills/**/reference/**
+__pycache__/
+*.pyc
+# Course-customised assessment builder embeds the confidential papers + answers
+.claude/skills/wsq-assessment/build_assessment.py

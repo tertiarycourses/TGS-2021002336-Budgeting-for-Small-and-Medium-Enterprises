@@ -1,0 +1,57 @@
+"""Topic 1 — Introduction to Financial Budgeting (A1, K1) — hands-on activities."""
+
+DOMAIN1 = [
+    dict(
+        num=1, topic=1,
+        title="Financial Statements with Xero",
+        objective="LO1 — Analyse business strategies and objectives (A1, K1)",
+        desc="Sign up for a free Xero account, open the demo company with fictional data, and generate the three financial statements a budget is expressed through.",
+        build="The Income Statement, Balance Sheet and Cash Flow Statement of the Xero demo company.",
+        services="Xero (free trial), Xero Demo Company",
+        steps=[
+            ("Open https://www.xero.com/sg/signup/ in your browser and sign up for a free Xero account with your email address.", ""),
+            ("Verify your email, set your password and log in to Xero.", ""),
+            ("From the menu, click your organisation name, then select Demo Company to switch into the demo organisation with fictional data.", ""),
+            ("In the Accounting menu, select Reports.", ""),
+            ("Under Financial statements, click Profit and Loss (Income Statement), set the date range to the current financial year and click Update.", ""),
+            ("Return to Reports and open the Balance Sheet as at today's date.", ""),
+            ("Return to Reports and open the Statement of Cash Flows for the same period.", ""),
+            ("Study each statement: identify Revenue, Cost of Goods Sold and SG&A on the P&L; Assets, Liabilities and Equity on the Balance Sheet; and operating, investing and financing cash flows on the Cash Flow Statement.", ""),
+        ],
+        test="You can display all three statements for the Xero demo company and point out where revenue, COGS, assets, liabilities, equity and net cash movement appear on each.",
+    ),
+    dict(
+        num=2, topic=1,
+        title="Creating a Budget in Xero",
+        objective="LO1 — Analyse business strategies and objectives (A1, K1)",
+        desc="Use Xero's Budget Manager to create a budget for the demo company, comparing budgeted amounts against actuals.",
+        build="A 12-month budget in Xero Budget Manager with budgeted amounts entered for key P&L accounts.",
+        services="Xero Budget Manager",
+        steps=[
+            ("In the Accounting menu, select Reports.", ""),
+            ("Under Financial, click Budget Manager.", ""),
+            ("Select your start date for the budget.", ""),
+            ("To compare with actuals, set how far back you want to view (3, 6 or 12 months). Select 'None' if you don't want to view actuals.", ""),
+            ("Select the period you want the budget to cover — 3, 6, 12 or 24 months.", ""),
+            ("Click Update to filter the budget by your selections.", ""),
+            ("Enter budgeted amounts into each account field. Use a simple formula with the green arrows to fill out the months (e.g. apply a fixed amount or a % increase per month).", ""),
+            ("Click Save to preserve your changes.", ""),
+        ],
+        test="Your saved budget shows 12 months of budgeted figures for revenue and expense accounts, and Budget Manager displays actuals alongside the budget for comparison.",
+    ),
+    dict(
+        num=3, topic=1,
+        title="Identifying Budget Types",
+        objective="LO1 — Analyse business strategies and objectives (A1, K1)",
+        desc="Classify the budgets you built in Xero against the classification of budgets — operating, financial, capital and cash — and the preparation methods (baseline, incremental, zero-based, hybrid).",
+        build="A completed budget-type classification table for the parameters used in the previous Xero activities.",
+        services="Xero, budget classification worksheet",
+        steps=[
+            ("List the accounts you budgeted in Lab 2 (revenue lines, cost of sales, SG&A expenses, capital items).", ""),
+            ("For each account, identify whether it belongs to an operating budget, financial budget, capital budget or cash budget.", ""),
+            ("Identify the preparation method you used for each line: baseline (previous plan), incremental (% or $ on the baseline), zero-based (fresh) or hybrid.", ""),
+            ("Discuss with the class: which budget type and method fits an SME's sales budget, rental expense and new-equipment purchase, and why.", ""),
+        ],
+        test="You can name the budget type and preparation method for every parameter in your Xero budget and justify the classification.",
+    ),
+]
