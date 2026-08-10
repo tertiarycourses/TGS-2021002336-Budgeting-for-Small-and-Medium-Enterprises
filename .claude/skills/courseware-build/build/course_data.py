@@ -9,8 +9,8 @@ this file + data_domain1.py … data_domain7.py so they stay 100% aligned.
 TITLE        = "WSQ Budgeting for Small and Medium Enterprises"
 SHORT_TITLE  = "WSQ Budgeting for Small and Medium Enterprises"   # used in output filenames
 COURSE_CODE  = "TGS-2021002336"
-VERSION      = "v12"
-VERSION_DATE = "10 August 2026"
+VERSION      = "v13"
+VERSION_DATE = "11 August 2026"
 ORG          = "Tertiary Infotech Academy Pte Ltd"
 UEN          = "UEN: 201200696W"
 TRAINER      = "Dr Alfred Ang"

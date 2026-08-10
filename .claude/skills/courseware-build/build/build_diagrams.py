@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Generate one workflow diagram PNG per lab (labs/assets/lab-NN-workflow.png)
+"""Generate one workflow diagram PNG per activity (activities/activityNN/)
 from the single-source data files, in the Tertiary house palette. Embedded in
-the Learner Guide and referenced by the lab MD files."""
+the Learner Guide and referenced by the activity MD files."""
 import os, sys, textwrap
 from PIL import Image, ImageDraw, ImageFont
 
@@ -19,10 +19,10 @@ def _find_repo(start):
     d=start
     for _ in range(8):
         d=os.path.dirname(d)
-        if os.path.isdir(os.path.join(d,"courseware")) and os.path.isdir(os.path.join(d,"labs")): return d
+        if os.path.isdir(os.path.join(d,"courseware")) and os.path.isdir(os.path.join(d,"activities")): return d
     return os.path.dirname(os.path.dirname(HERE))
 REPO=_find_repo(HERE)
-OUT=os.path.join(REPO,"labs","assets"); os.makedirs(OUT,exist_ok=True)
+ACTS=os.path.join(REPO,"activities")
 
 BLUE=(31,111,235); TEAL=(16,185,129); VIOLET=(124,58,237); AMBER=(245,158,11)
 INK=(22,27,38); GREY=(91,99,114); LIGHT=(245,248,252); WHITE=(255,255,255); LINEC=(226,232,240)
@@ -56,7 +56,7 @@ for a in ACT:
     H=TH+rows*BH+(rows-1)*GY+M
     img=Image.new("RGB",(W,H),WHITE); d=ImageDraw.Draw(img)
     d.rectangle([0,0,W,10],fill=BLUE)
-    d.text((M,34),f"Lab {a['num']} — {a['title']}",font=font(38,True),fill=INK)
+    d.text((M,34),f"Activity {a['num']} — {a['title']}",font=font(38,True),fill=INK)
     d.text((M,84),f"Workflow · Tools: {a['services']}",font=font(24),fill=GREY)
     for i,st in enumerate(steps):
         r=i//cols; c=i%cols
@@ -75,5 +75,6 @@ for a in ACT:
             ax=x+BW+4; ay=y+BH//2
             d.line([ax,ay,ax+GX-12,ay],fill=col,width=4)
             d.polygon([(ax+GX-12,ay-8),(ax+GX-12,ay+8),(ax+GX-2,ay)],fill=col)
-    fn=os.path.join(OUT,f"lab-{a['num']:02d}-workflow.png")
+    folder=os.path.join(ACTS,f"activity{a['num']:02d}"); os.makedirs(folder,exist_ok=True)
+    fn=os.path.join(folder,f"activity-{a['num']:02d}-workflow.png")
     img.save(fn); print("Saved",fn)

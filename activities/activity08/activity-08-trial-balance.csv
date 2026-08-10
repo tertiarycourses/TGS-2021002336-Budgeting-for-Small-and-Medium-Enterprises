@@ -1,0 +1,21 @@
+Account,Debit,Credit
+Cash and Bank,185000,0
+Accounts Receivable,145000,0
+Inventory,120000,0
+"Property, Plant & Equipment",380000,0
+Accumulated Depreciation,0,60000
+Accounts Payable,0,98000
+Short-Term Loan,0,50000
+Long-Term Loan,0,200000
+Share Capital,0,300000
+Retained Earnings,0,122000
+Sales,0,612000
+Cost of Goods Sold,336600,0
+Salaries,105000,0
+Rent,48000,0
+Marketing,24000,0
+Utilities,9000,0
+Depreciation Expense,15000,0
+Other Expenses,11000,0
+Interest Expense,6000,0
+Suspense (balancing),57400,0

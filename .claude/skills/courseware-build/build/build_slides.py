@@ -32,7 +32,7 @@ def _find_repo(start):
     d = start
     for _ in range(8):
         d = os.path.dirname(d)
-        if os.path.isdir(os.path.join(d, "courseware")) and os.path.isdir(os.path.join(d, "labs")):
+        if os.path.isdir(os.path.join(d, "courseware")) and os.path.isdir(os.path.join(d, "activities")):
             return d
     return os.path.dirname(os.path.dirname(HERE))
 REPO = _find_repo(HERE)
@@ -273,18 +273,18 @@ flow_h("Download Course Material",[
  "Go to lms-tms.tertiaryinfotech.com and log in with your registered email",
  "Open My Courses and select this course",
  "Download the Trainer Slides and Learner Guide (PDF)",
- "Open the Activities / Lab folder for the hands-on templates",
+ "Open the Activities folder for the hands-on data files and templates",
  "Keep the materials handy — the assessment is open book"],kicker="LMS / TMS · lms-tms.tertiaryinfotech.com",color=VIOLET)
 two_col("Lesson Plan — 2 Days, 8 hours/day",[
  (f"Day 1 — {C.DAY_THEMES[1]}",0),
- ("Topic 1: Introduction to Financial Budgeting (Labs 1–3)",1),
- ("Topic 2: Financial Forecasting (Lab 4)",1),
- ("Topic 3: Budget Preparation (Lab 5)",1)],
+ ("Topic 1: Introduction to Financial Budgeting (Activities 1–3)",1),
+ ("Topic 2: Financial Forecasting (Activity 4)",1),
+ ("Topic 3: Budget Preparation (Activity 5)",1)],
  [(f"Day 2 — {C.DAY_THEMES[2]}",0),
- ("Topic 4: Budget Control Plan (Lab 6)",1),
- ("Topic 5: Budget Analysis (Labs 7–8)",1),
- ("Topic 6: Budget Approval (Lab 9)",1),
- ("Topic 7: Financial Compliance (Labs 10–12)",1),
+ ("Topic 4: Budget Control Plan (Activity 6)",1),
+ ("Topic 5: Budget Analysis (Activities 7–8)",1),
+ ("Topic 6: Budget Approval (Activity 9)",1),
+ ("Topic 7: Financial Compliance (Activities 10–12)",1),
  ("Final Assessment: WA (SAQ) + WA (CS)",1),
  ("Daily timing: 9:30am–6:30pm · 1-hour lunch · tea breaks within",1)],
  kicker="SCHEDULE",lhead="Day 1",rhead="Day 2")
@@ -672,14 +672,14 @@ for t in C.TOPICS:
         cards=[]
         for gi,g in enumerate(groups):
             if not g: lbl="—"
-            elif len(g)==1: lbl=f"Lab {g[0]['num']}"
-            else: lbl=f"Labs {g[0]['num']}–{g[-1]['num']}"
+            elif len(g)==1: lbl=f"Activity {g[0]['num']}"
+            else: lbl=f"Activities {g[0]['num']}–{g[-1]['num']}"
             cards.append((CARD_COLORS[gi], lbl,
                           [a["title"] for a in g] if g else ["—"]))
         cards3(f"Hands-On Activities — {t['title']}", cards, kicker="WHAT YOU'LL DO")
     for a in acts:
-        activity_overview(f"LAB {a['num']}", a["title"], a["desc"], a["build"], a["services"], kicker=f"TOPIC {t['code']} · HANDS-ON ACTIVITY")
-        test_slide(a["title"], a["test"], kicker=f"LAB {a['num']} · VERIFY")
+        activity_overview(f"ACTIVITY {a['num']}", a["title"], a["desc"], a["build"], a["services"], kicker=f"TOPIC {t['code']} · HANDS-ON ACTIVITY")
+        test_slide(a["title"], a["test"], kicker=f"ACTIVITY {a['num']} · VERIFY")
     content(f"Recap — {t['title']}",
             ["You can now: "+a["objective"] for a in {x["objective"]:x for x in acts}.values()][:6],
             kicker="TOPIC RECAP", size=17)

@@ -20,6 +20,7 @@ from data_domain1 import DOMAIN1; from data_domain2 import DOMAIN2
 from data_domain3 import DOMAIN3; from data_domain4 import DOMAIN4
 from data_domain5 import DOMAIN5; from data_domain6 import DOMAIN6
 from data_domain7 import DOMAIN7
+from data_files import DATA
 ACT=DOMAIN1+DOMAIN2+DOMAIN3+DOMAIN4+DOMAIN5+DOMAIN6+DOMAIN7
 import prodoc
 def _find_repo(start):
@@ -28,7 +29,7 @@ def _find_repo(start):
     d=start
     for _ in range(8):
         d=os.path.dirname(d)
-        if os.path.isdir(os.path.join(d,"courseware")) and os.path.isdir(os.path.join(d,"labs")): return d
+        if os.path.isdir(os.path.join(d,"courseware")) and os.path.isdir(os.path.join(d,"activities")): return d
     return os.path.dirname(os.path.dirname(HERE))
 REPO=_find_repo(HERE); ASSETS=os.path.join(os.path.dirname(HERE),"assets")
 
@@ -52,7 +53,7 @@ p(f"This Learner Guide accompanies the WSQ course {C.TITLE} ({C.COURSE_CODE}), c
   f"seven course topics aligned to the Skills Framework TSC {C.TSC_TITLE} ({C.TSC_CODE}). "
   "The activities use Xero, Microsoft Power BI, Google Forms and case-study templates so that every "
   "learning outcome is practised hands-on.")
-p("Use this guide alongside the course slides and the activity files in the labs/ folder of the course "
+p("Use this guide alongside the course slides and the activity folders (activities/) of the course "
   "repository. The slides give each activity a one-page overview; this guide carries the full detailed "
   "steps. The final assessment is open book — you may refer to the slides, this Learner Guide and any "
   "approved materials.")
@@ -72,7 +73,7 @@ h3("What you need")
 bullets([
  "A laptop with a modern browser (Chrome, Edge or Safari) and internet access.",
  "An email address you can access in class — used to sign up for the free Xero trial and Microsoft Power BI accounts.",
- "The 99 Agency working template and the tax computation template — downloaded from the LMS (lms-tms.tertiaryinfotech.com) or Google Classroom as directed by the trainer.",
+ "The lab data files (Excel workbooks + CSV mirrors) — one folder per activity, activities/activity01 … activity12, in the course repository and on the LMS (lms-tms.tertiaryinfotech.com) under Activities. Every activity's mock data (financial statements, budgets, actuals, the 99 Agency template, Xero-style exports and tax worksheets) ships there.",
  "Excel, Google Sheets or LibreOffice Calc to work through the case-study schedules.",
 ])
 h3("Accounts you will create during the course")
@@ -95,21 +96,29 @@ for t in C.TOPICS:
     h3("Key concepts")
     bullets([f"{k} — {v}" for k,v in t["concepts"]])
     for a in [x for x in ACT if x["topic"]==t["num"]]:
-        h2(f"Lab {a['num']} — {a['title']}")
+        h2(f"Activity {a['num']} — {a['title']}")
         p(f"Learning outcome: {a['objective']}.")
         p(f"Goal: {a['desc']}")
         h3("What you'll produce")
         p(a["build"]+f"   (Tools: {a['services']}.)")
-        img(os.path.join(REPO,"labs","assets",f"lab-{a['num']:02d}-workflow.png"),
-            f"Lab {a['num']} workflow — {a['title']}")
+        img(os.path.join(REPO,"activities",f"activity{a['num']:02d}",f"activity-{a['num']:02d}-workflow.png"),
+            f"Activity {a['num']} workflow — {a['title']}")
         h3("Step-by-step")
         st=[]
         for i,(instr,cmd) in enumerate(a["steps"],1):
             st.append((instr,cmd))
         steps(st)
+        d=DATA.get(a["num"])
+        if d:
+            h3(f"Data files for this activity (activities/activity{a['num']:02d}/)")
+            bullets([f"{fn} — {desc}" for fn,desc in d["files"]])
+            h3("Analyzing the Excel workbook — step by step")
+            steps([(s,"") for s in d["excel_steps"]])
+            h3("Analyzing the CSV data — step by step")
+            steps([(s,"") for s in d["csv_steps"]])
         h3("Check your work")
         p(a["test"])
-        note(f"A printable copy of this activity is in labs/lab-{a['num']:02d}-*.md in the course repository.")
+        note(f"A printable copy of this activity — with its workflow diagram and data files — is in the activities/activity{a['num']:02d}/ folder of the course repository.")
         rule()
 
 h1("Assessment Preparation")
@@ -189,7 +198,8 @@ prodoc.add_cover_page(doc,"LEARNER GUIDE",C.TITLE,C.VERSION.lstrip("v"),
 prodoc.add_version_control(doc,[
  ("10",C.VERSION_DATE,"Legacy release — Budgeting for SMEs courseware (reference deck v10).",C.TRAINER),
  ("11",C.VERSION_DATE,"Full regeneration in the single-source pipeline: detailed step-by-step guides for all 12 hands-on activities across the 7 topics, aligned to the visual slide deck and the WA (SAQ + CS) assessments.",C.TRAINER),
- (C.VERSION.lstrip("v"),C.VERSION_DATE,"QA fixes: workflow diagram embedded per activity, per-activity step numbering matching the Markdown mirror.",C.TRAINER),
+ ("12",C.VERSION_DATE,"QA fixes: workflow diagram embedded per activity, per-activity step numbering matching the Markdown mirror.",C.TRAINER),
+ (C.VERSION.lstrip("v"),C.VERSION_DATE,"Added mock data sets for every activity (Excel workbooks + CSV mirrors, one folder per activity: activities/activity01 - activity12) with full step-by-step walkthroughs for analyzing both the Excel and the CSV data.",C.TRAINER),
 ])
 prodoc.add_toc(doc)
 

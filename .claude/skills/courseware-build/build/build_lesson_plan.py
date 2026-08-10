@@ -28,7 +28,7 @@ def _find_repo(start):
     d=start
     for _ in range(8):
         d=os.path.dirname(d)
-        if os.path.isdir(os.path.join(d,"courseware")) and os.path.isdir(os.path.join(d,"labs")): return d
+        if os.path.isdir(os.path.join(d,"courseware")) and os.path.isdir(os.path.join(d,"activities")): return d
     return os.path.dirname(os.path.dirname(HERE))
 REPO=_find_repo(HERE); ASSETS=os.path.join(os.path.dirname(HERE),"assets")
 
@@ -36,7 +36,7 @@ BRAND=RGBColor(0x1F,0x6F,0xEB); DARK=RGBColor(0x11,0x18,0x27); GREY=RGBColor(0x5
 HEADER_FILL="1F6FEB"; TOPIC_FILL="E8F0FE"; BREAK_FILL="FFF4E5"; LUNCH_FILL="FDE9D9"; ASSESS_FILL="E8F7EE"
 
 def lab_titles(nums):
-    return "; ".join(f"Lab {a['num']}: {a['title']}" for a in ACT if a['num'] in nums)
+    return "; ".join(f"Activity {a['num']}: {a['title']}" for a in ACT if a['num'] in nums)
 
 # ------------------------------------------------ schedule (single source of truth for timing)
 # (start, end, minutes, kind, activity_text)  kind: admin/topic/lab/break/lunch/assess/recap
@@ -77,8 +77,9 @@ prodoc.add_cover_page(doc,"LESSON PLAN",C.TITLE,C.VERSION.lstrip("v"),
                       course_logo=None, course_code=C.COURSE_CODE)
 prodoc.add_version_control(doc,[
  ("10",C.VERSION_DATE,"Legacy release — Budgeting for SMEs 2-day lesson plan (reference deck v10).",C.TRAINER),
- ("11",C.VERSION_DATE,"Full regeneration in the single-source pipeline: 12 hands-on labs across 7 topics, visual slide deck, aligned LG and assessments (WA SAQ 70 min + WA CS 80 min).",C.TRAINER),
- (C.VERSION.lstrip("v"),C.VERSION_DATE,"QA alignment pass: slide references re-verified against deck v12; break dividers corrected (End of Day 1, Day 2 lunch).",C.TRAINER),
+ ("11",C.VERSION_DATE,"Full regeneration in the single-source pipeline: 12 hands-on activities across 7 topics, visual slide deck, aligned LG and assessments (WA SAQ 70 min + WA CS 80 min).",C.TRAINER),
+ ("12",C.VERSION_DATE,"QA alignment pass: slide references re-verified against deck v12; break dividers corrected (End of Day 1, Day 2 lunch).",C.TRAINER),
+ (C.VERSION.lstrip("v"),C.VERSION_DATE,"Regenerated in step with LG v13 — mock data sets (Excel + CSV) added to every activity folder (activities/activity01 - activity12); schedule and slide references unchanged.",C.TRAINER),
 ])
 prodoc.add_toc(doc)
 
@@ -139,17 +140,17 @@ for day,(theme,rows) in SCHEDULE.items():
     p=doc.add_paragraph(); r=p.add_run(f"Total training time: {training} minutes ({training//60} hours)."); r.italic=True; r.font.size=Pt(9.5); r.font.color.rgb=GREY
     assert training==480, f"Day {day} training minutes = {training}, expected 480"
 
-H("Lab Reference (aligned to the Skills Framework TSC)",1)
+H("Activity Reference (aligned to the Skills Framework TSC)",1)
 tt=doc.add_table(rows=0,cols=3); tt.style="Table Grid"
 hdr=tt.add_row().cells
-for i,htext in enumerate(["Topic","TSC Coverage","Labs"]):
+for i,htext in enumerate(["Topic","TSC Coverage","Activities"]):
     set_cell(hdr[i],htext,bold=True,size=10,color=RGBColor(0xFF,0xFF,0xFF),fill=HEADER_FILL)
 for tp in C.TOPICS:
     acts=[a for a in ACT if a["topic"]==tp["num"]]
     cells=tt.add_row().cells
     set_cell(cells[0],f"Topic {tp['code']}: {tp['title']}",bold=True,size=9.5,fill=TOPIC_FILL)
     set_cell(cells[1],tp["weighting"],size=9.5,fill=TOPIC_FILL)
-    set_cell(cells[2],", ".join(f"Lab {a['num']}" for a in acts),size=9.5)
+    set_cell(cells[2],", ".join(f"Activity {a['num']}" for a in acts),size=9.5)
 
 prodoc.add_page_numbers(doc)
 prodoc.enable_update_fields(doc)

@@ -1,0 +1,23 @@
+Assumption,Value
+"Market size (addressable, S$)",12000000
+99 Agency market share,0.12
+Committee rule,Average of bottom-up and top-down
+Ad Campaigns cost of sales (% of Ad revenue),0.3
+SEO Campaigns cost of sales (% of SEO revenue),0.25
+Revenue split — Ad : SEO,60% : 40%
+Fixed SG&A: Office rent (annual),60000
+Fixed SG&A: Accounting services,12000
+Fixed SG&A: Legal fees,8000
+Fixed SG&A: Staff training,10000
+Fixed SG&A: Management salaries,180000
+Fixed SG&A: Administration,24000
+Variable SG&A: External services (% revenue),0.04
+Variable SG&A: Selling commissions (% revenue),0.03
+CAPEX Q1 / Q2 / Q3 / Q4,"40,000 / 60,000 / 25,000 / 80,000"
+Beginning Fixed Assets,400000
+Depreciation (% of beginning Fixed Assets),0.1
+Financial liabilities: beginning,3200000
+Financial liabilities: ending (target),2800000
+Interest rate,0.05
+Accounts receivable days,45
+Accounts payable days,30

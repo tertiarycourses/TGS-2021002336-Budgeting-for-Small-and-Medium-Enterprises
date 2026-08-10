@@ -1,0 +1,20 @@
+Line Item,Amount (S$)
+Revenue - Product Sales,850000
+Revenue - Services,350000
+Total Revenue,1200000
+Purchases,420000
+Freight Inwards,35000
+Total Cost of Goods Sold,455000
+Gross Profit,745000
+Salaries,210000
+Office Rent,96000
+Marketing,48000
+Utilities,18000
+Depreciation,30000
+Other Expenses,22000
+Total SG&A,424000
+Operating Profit,321000
+Interest Expense,12000
+Profit Before Tax,309000
+Tax (17%),52530
+Net Profit,256470

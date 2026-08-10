@@ -25,7 +25,7 @@ def find_repo(start):
     d = start
     for _ in range(8):
         d = os.path.dirname(d)
-        if os.path.isdir(os.path.join(d,"courseware")) and os.path.isdir(os.path.join(d,"labs")): return d
+        if os.path.isdir(os.path.join(d,"courseware")) and os.path.isdir(os.path.join(d,"activities")): return d
     return os.path.dirname(os.path.dirname(start))
 print(find_repo(here) + "\t" + C.SHORT_TITLE)
 PY
